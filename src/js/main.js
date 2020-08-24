@@ -2,6 +2,7 @@
 
 import modal from './modules/modal';
 import requestForm from './modules/requestForm';
+import tabs from './modules/tabs';
 
 window.addEventListener('DOMContentLoaded', () => {
 
@@ -22,6 +23,11 @@ window.addEventListener('DOMContentLoaded', () => {
     requestForm({
         forms: 'form',
         phoneInputName: 'user_phone'
+    });
+
+    tabs({
+        tabsBtnClass: '.glazing_block',
+        tabsContentClass: '.glazing_content'
     });
 
 });

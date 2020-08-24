@@ -4084,6 +4084,8 @@ module.exports = g;
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/modal */ "./src/js/modules/modal.js");
 /* harmony import */ var _modules_requestForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/requestForm */ "./src/js/modules/requestForm.js");
+/* harmony import */ var _modules_tabs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/tabs */ "./src/js/modules/tabs.js");
+
 
 
 
@@ -4104,6 +4106,10 @@ window.addEventListener('DOMContentLoaded', function () {
   Object(_modules_requestForm__WEBPACK_IMPORTED_MODULE_1__["default"])({
     forms: 'form',
     phoneInputName: 'user_phone'
+  });
+  Object(_modules_tabs__WEBPACK_IMPORTED_MODULE_2__["default"])({
+    tabsBtnClass: '.glazing_block',
+    tabsContentClass: '.glazing_content'
   });
 });
 
@@ -4295,6 +4301,44 @@ var success = function () {
 }();
 
 /* harmony default export */ __webpack_exports__["default"] = (success);
+
+/***/ }),
+
+/***/ "./src/js/modules/tabs.js":
+/*!********************************!*\
+  !*** ./src/js/modules/tabs.js ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__);
+
+
+
+
+var tabs = function tabs(_ref) {
+  var tabsBtnClass = _ref.tabsBtnClass,
+      tabsContentClass = _ref.tabsContentClass;
+  var btns = document.querySelectorAll(tabsBtnClass),
+      tabsContent = document.querySelectorAll(tabsContentClass);
+  btns.forEach(function (btn, i) {
+    return btn.addEventListener('click', function () {
+      btns.forEach(function (elem) {
+        return elem.classList.remove('active');
+      });
+      tabsContent.forEach(function (elem) {
+        return elem.style.display = 'none';
+      });
+      btn.classList.add('active');
+      tabsContent[i].style.display = 'block';
+    });
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (tabs);
 
 /***/ }),
 
