@@ -1,0 +1,46 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "request": [
+    {
+      "user_name": "ff",
+      "user_phone": "89999999",
+      "id": 1
+    },
+    {
+      "user_name": "rregr",
+      "user_phone": "sss",
+      "id": 2
+    },
+    {
+      "user_name": "ff",
+      "user_phone": "tttt",
+      "id": 3
+    },
+    {
+      "user_name": "Danila",
+      "user_phone": "ff",
+      "id": 4
+    },
+    {
+      "user_name": "rregr",
+      "user_phone": "89999999",
+      "id": 5
+    }
+  ]
+}
