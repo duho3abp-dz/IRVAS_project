@@ -15,31 +15,31 @@ window.addEventListener('DOMContentLoaded', () => {
         button: '.header_btn',
         modalWindow: '.popup_engineer',
         modalCloseButton: '.popup_engineer .popup_close',
-        backing: 'popup_engineer'
+        background: 'popup_engineer'
     });
     modal({
         button: '.phone_link',
         modalWindow: '.popup',
         modalCloseButton: '.popup .popup_close',
-        backing: 'popup'
+        background: 'popup'
     });
     modal({
         button: '.glazing_price_btn',
         modalWindow: '.popup_calc',
         modalCloseButton: '.popup_calc_close',
-        backing: 'popup_calc'
+        background: 'popup_calc'
     });
     modal({
         button: '.popup_calc_button',
         modalWindow: '.popup_calc_profile',
         modalCloseButton: '.popup_calc_profile_close',
-        backing: 'popup_calc_profile'
+        background: 'popup_calc_profile'
     });
     modal({
         button: '.popup_calc_profile_button',
         modalWindow: '.popup_calc_end',
         modalCloseButton: '.popup_calc_end_close',
-        backing: 'popup_calc_end'
+        background: 'popup_calc_end'
     });
 
     // ------------------------- Tabs -------------------------

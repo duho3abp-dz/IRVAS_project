@@ -1,8 +1,8 @@
 'use strict';
 
-import backingCloseModal from './backingCloseModal';
+import backgroundCloseModal from './backgroundCloseModal';
 
-const modal = ({button, modalWindow, modalCloseButton, backing, close, allModalWindowsClass = [
+const modal = ({button, modalWindow, modalCloseButton, background, close, allModalWindowsClass = [
     '.popup',
     '.popup_engineer',
     '.popup_calc',
@@ -33,7 +33,7 @@ const modal = ({button, modalWindow, modalCloseButton, backing, close, allModalW
 
     closeBtn.addEventListener('click', () => modal.style.display = 'none');
 
-    backingCloseModal({modal, backing});
+    backgroundCloseModal({modal, background});
 
 };
 

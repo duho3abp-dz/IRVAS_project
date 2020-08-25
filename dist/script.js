@@ -4104,31 +4104,31 @@ window.addEventListener('DOMContentLoaded', function () {
     button: '.header_btn',
     modalWindow: '.popup_engineer',
     modalCloseButton: '.popup_engineer .popup_close',
-    backing: 'popup_engineer'
+    background: 'popup_engineer'
   });
   Object(_modules_modal__WEBPACK_IMPORTED_MODULE_0__["default"])({
     button: '.phone_link',
     modalWindow: '.popup',
     modalCloseButton: '.popup .popup_close',
-    backing: 'popup'
+    background: 'popup'
   });
   Object(_modules_modal__WEBPACK_IMPORTED_MODULE_0__["default"])({
     button: '.glazing_price_btn',
     modalWindow: '.popup_calc',
     modalCloseButton: '.popup_calc_close',
-    backing: 'popup_calc'
+    background: 'popup_calc'
   });
   Object(_modules_modal__WEBPACK_IMPORTED_MODULE_0__["default"])({
     button: '.popup_calc_button',
     modalWindow: '.popup_calc_profile',
     modalCloseButton: '.popup_calc_profile_close',
-    backing: 'popup_calc_profile'
+    background: 'popup_calc_profile'
   });
   Object(_modules_modal__WEBPACK_IMPORTED_MODULE_0__["default"])({
     button: '.popup_calc_profile_button',
     modalWindow: '.popup_calc_end',
     modalCloseButton: '.popup_calc_end_close',
-    backing: 'popup_calc_end'
+    background: 'popup_calc_end'
   }); // ------------------------- Tabs -------------------------
 
   Object(_modules_tabs__WEBPACK_IMPORTED_MODULE_2__["default"])({
@@ -4178,10 +4178,10 @@ window.addEventListener('DOMContentLoaded', function () {
 
 /***/ }),
 
-/***/ "./src/js/modules/backingCloseModal.js":
-/*!*********************************************!*\
-  !*** ./src/js/modules/backingCloseModal.js ***!
-  \*********************************************/
+/***/ "./src/js/modules/backgroundCloseModal.js":
+/*!************************************************!*\
+  !*** ./src/js/modules/backgroundCloseModal.js ***!
+  \************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -4189,19 +4189,19 @@ window.addEventListener('DOMContentLoaded', function () {
 __webpack_require__.r(__webpack_exports__);
 
 
-var backingCloseModal = function backingCloseModal(_ref) {
+var backgroundCloseModal = function backgroundCloseModal(_ref) {
   var modal = _ref.modal,
-      backing = _ref.backing;
+      background = _ref.background;
   modal.addEventListener('click', function (_ref2) {
     var target = _ref2.target;
 
-    if (target.classList.value === backing) {
+    if (target.classList.value === background) {
       modal.style.display = 'none';
     }
   });
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (backingCloseModal);
+/* harmony default export */ __webpack_exports__["default"] = (backgroundCloseModal);
 
 /***/ }),
 
@@ -4346,7 +4346,7 @@ var form = function form(_ref) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
 /* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _backingCloseModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./backingCloseModal */ "./src/js/modules/backingCloseModal.js");
+/* harmony import */ var _backgroundCloseModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./backgroundCloseModal */ "./src/js/modules/backgroundCloseModal.js");
 
 
 
@@ -4356,7 +4356,7 @@ var modal = function modal(_ref) {
   var button = _ref.button,
       modalWindow = _ref.modalWindow,
       modalCloseButton = _ref.modalCloseButton,
-      backing = _ref.backing,
+      background = _ref.background,
       close = _ref.close,
       _ref$allModalWindowsC = _ref.allModalWindowsClass,
       allModalWindowsClass = _ref$allModalWindowsC === void 0 ? ['.popup', '.popup_engineer', '.popup_calc', '.popup_calc_profile', '.popup_calc_end'] : _ref$allModalWindowsC;
@@ -4384,9 +4384,9 @@ var modal = function modal(_ref) {
   closeBtn.addEventListener('click', function () {
     return modal.style.display = 'none';
   });
-  Object(_backingCloseModal__WEBPACK_IMPORTED_MODULE_1__["default"])({
+  Object(_backgroundCloseModal__WEBPACK_IMPORTED_MODULE_1__["default"])({
     modal: modal,
-    backing: backing
+    background: background
   });
 };
 
@@ -4446,7 +4446,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_es_array_concat__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_concat__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
 /* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _backingCloseModal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./backingCloseModal */ "./src/js/modules/backingCloseModal.js");
+/* harmony import */ var _backgroundCloseModal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./backgroundCloseModal */ "./src/js/modules/backgroundCloseModal.js");
 
 
 
@@ -4466,9 +4466,9 @@ var picture = function picture(_ref) {
       div.innerHTML = "\n            <img \n                class=\"picture_modal\" \n                src=\"".concat(pic.parentElement.getAttribute('href'), "\" \n                alt=\"").concat(pic.getAttribute('alt'), "\"\n            />\n        ");
     });
   });
-  Object(_backingCloseModal__WEBPACK_IMPORTED_MODULE_2__["default"])({
+  Object(_backgroundCloseModal__WEBPACK_IMPORTED_MODULE_2__["default"])({
     modal: div,
-    backing: ''
+    background: ''
   });
 };
 

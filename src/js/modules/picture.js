@@ -1,6 +1,6 @@
 'use strict';
 
-import backingCloseModal from './backingCloseModal';
+import backgroundCloseModal from './backgroundCloseModal';
 
 const picture = ({imgClass}) => {
     
@@ -34,9 +34,9 @@ const picture = ({imgClass}) => {
         
     }));
 
-    backingCloseModal({
+    backgroundCloseModal({
         modal: div, 
-        backing: ''
+        background: ''
     });
 
 };
