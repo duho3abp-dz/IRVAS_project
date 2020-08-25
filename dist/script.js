@@ -4086,7 +4086,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/form */ "./src/js/modules/form.js");
 /* harmony import */ var _modules_tabs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/tabs */ "./src/js/modules/tabs.js");
 /* harmony import */ var _modules_calc__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/calc */ "./src/js/modules/calc.js");
-/* harmony import */ var _modules_onlyNumbersInput__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/onlyNumbersInput */ "./src/js/modules/onlyNumbersInput.js");
+/* harmony import */ var _modules_timer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/timer */ "./src/js/modules/timer.js");
+/* harmony import */ var _modules_onlyNumbersInput__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/onlyNumbersInput */ "./src/js/modules/onlyNumbersInput.js");
+
 
 
 
@@ -4150,12 +4152,20 @@ window.addEventListener('DOMContentLoaded', function () {
   Object(_modules_calc__WEBPACK_IMPORTED_MODULE_3__["default"])({
     topCheckboxId: '#cold',
     bottomCheckboxId: '#warm'
+  }); // ------------------------- Timer -------------------------
+
+  Object(_modules_timer__WEBPACK_IMPORTED_MODULE_4__["default"])({
+    trgetDate: '2020-09-19',
+    days: '#days',
+    hours: '#hours',
+    minutes: '#minutes',
+    seconds: '#seconds'
   }); // ------------------------- onlyNumbersInput -------------------------
 
-  Object(_modules_onlyNumbersInput__WEBPACK_IMPORTED_MODULE_4__["default"])({
+  Object(_modules_onlyNumbersInput__WEBPACK_IMPORTED_MODULE_5__["default"])({
     inputName: 'user_phone'
   });
-  Object(_modules_onlyNumbersInput__WEBPACK_IMPORTED_MODULE_4__["default"])({
+  Object(_modules_onlyNumbersInput__WEBPACK_IMPORTED_MODULE_5__["default"])({
     inputClass: '.popup_calc .form-control'
   });
 });
@@ -4475,6 +4485,54 @@ var tabs = function tabs(_ref) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (tabs);
+
+/***/ }),
+
+/***/ "./src/js/modules/timer.js":
+/*!*********************************!*\
+  !*** ./src/js/modules/timer.js ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+
+
+var timer = function timer(_ref) {
+  var trgetDate = _ref.trgetDate,
+      days = _ref.days,
+      hours = _ref.hours,
+      minutes = _ref.minutes,
+      seconds = _ref.seconds;
+  var target = new Date(trgetDate),
+      timeZoneDifference = -target.getTimezoneOffset() * 60 * 1000;
+  var day = document.querySelector(days),
+      hour = document.querySelector(hours),
+      minute = document.querySelector(minutes),
+      second = document.querySelector(seconds);
+
+  var numberCheck = function numberCheck(num) {
+    return +num < 10 && +num >= 0 ? "0".concat(num) : num;
+  };
+
+  var сountdown = function сountdown() {
+    var total = target - new Date() - timeZoneDifference,
+        days = Math.floor(total / (1000 * 60 * 60 * 24)),
+        hours = Math.floor(total / (1000 * 60 * 60) % 24),
+        minutes = Math.floor(total / (1000 * 60) % 60),
+        seconds = Math.floor(total / 1000 % 60);
+    day.textContent = numberCheck(days);
+    hour.textContent = numberCheck(hours);
+    minute.textContent = numberCheck(minutes);
+    second.textContent = numberCheck(seconds);
+  };
+
+  сountdown();
+  setInterval(сountdown, 1000);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (timer);
 
 /***/ }),
 

@@ -4,6 +4,7 @@ import modal from './modules/modal';
 import form from './modules/form';
 import tabs from './modules/tabs';
 import calc from './modules/calc';
+import timer from './modules/timer';
 import onlyNumbersInput from './modules/onlyNumbersInput';
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -66,6 +67,15 @@ window.addEventListener('DOMContentLoaded', () => {
     calc({
         topCheckboxId: '#cold',
         bottomCheckboxId: '#warm'
+    });
+
+    // ------------------------- Timer -------------------------
+    timer({
+        trgetDate: '2020-09-19',
+        days: '#days',
+        hours: '#hours',
+        minutes: '#minutes',
+        seconds: '#seconds',
     });
 
     // ------------------------- onlyNumbersInput -------------------------

@@ -362,6 +362,10 @@ textarea:focus {
 }
 
 /*glazing*/
+.glazing_slider {
+  text-align: center;
+}
+
 .glazing {
   padding: 8rem 0;
 }
