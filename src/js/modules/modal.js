@@ -1,5 +1,7 @@
 'use strict';
 
+import backingCloseModal from './backingCloseModal';
+
 const modal = ({button, modalWindow, modalCloseButton, backing, close, allModalWindowsClass = [
     '.popup',
     '.popup_engineer',
@@ -31,11 +33,7 @@ const modal = ({button, modalWindow, modalCloseButton, backing, close, allModalW
 
     closeBtn.addEventListener('click', () => modal.style.display = 'none');
 
-    modal.addEventListener('click', ({target}) => {
-        if(target.classList.value === backing) {
-            modal.style.display = 'none';
-        }
-    });
+    backingCloseModal({modal, backing});
 
 };
 

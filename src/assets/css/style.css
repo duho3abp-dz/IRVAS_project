@@ -612,6 +612,16 @@ textarea:focus {
   opacity: 1;
 }
 
+.picture_modal {
+  width: 45%;
+  max-height: 99%;
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
 /*Guarantees*/
 .guarantees {
   padding: 6rem 0 1rem;

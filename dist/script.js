@@ -4087,7 +4087,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_tabs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/tabs */ "./src/js/modules/tabs.js");
 /* harmony import */ var _modules_calc__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/calc */ "./src/js/modules/calc.js");
 /* harmony import */ var _modules_timer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/timer */ "./src/js/modules/timer.js");
-/* harmony import */ var _modules_onlyNumbersInput__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/onlyNumbersInput */ "./src/js/modules/onlyNumbersInput.js");
+/* harmony import */ var _modules_picture__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/picture */ "./src/js/modules/picture.js");
+/* harmony import */ var _modules_onlyNumbersInput__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/onlyNumbersInput */ "./src/js/modules/onlyNumbersInput.js");
+
 
 
 
@@ -4160,15 +4162,46 @@ window.addEventListener('DOMContentLoaded', function () {
     hours: '#hours',
     minutes: '#minutes',
     seconds: '#seconds'
+  }); // ------------------------- Picture -------------------------
+
+  Object(_modules_picture__WEBPACK_IMPORTED_MODULE_5__["default"])({
+    imgClass: '.preview'
   }); // ------------------------- onlyNumbersInput -------------------------
 
-  Object(_modules_onlyNumbersInput__WEBPACK_IMPORTED_MODULE_5__["default"])({
+  Object(_modules_onlyNumbersInput__WEBPACK_IMPORTED_MODULE_6__["default"])({
     inputName: 'user_phone'
   });
-  Object(_modules_onlyNumbersInput__WEBPACK_IMPORTED_MODULE_5__["default"])({
+  Object(_modules_onlyNumbersInput__WEBPACK_IMPORTED_MODULE_6__["default"])({
     inputClass: '.popup_calc .form-control'
   });
 });
+
+/***/ }),
+
+/***/ "./src/js/modules/backingCloseModal.js":
+/*!*********************************************!*\
+  !*** ./src/js/modules/backingCloseModal.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+
+
+var backingCloseModal = function backingCloseModal(_ref) {
+  var modal = _ref.modal,
+      backing = _ref.backing;
+  modal.addEventListener('click', function (_ref2) {
+    var target = _ref2.target;
+
+    if (target.classList.value === backing) {
+      modal.style.display = 'none';
+    }
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (backingCloseModal);
 
 /***/ }),
 
@@ -4313,6 +4346,8 @@ var form = function form(_ref) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
 /* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _backingCloseModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./backingCloseModal */ "./src/js/modules/backingCloseModal.js");
+
 
 
 
@@ -4349,12 +4384,9 @@ var modal = function modal(_ref) {
   closeBtn.addEventListener('click', function () {
     return modal.style.display = 'none';
   });
-  modal.addEventListener('click', function (_ref2) {
-    var target = _ref2.target;
-
-    if (target.classList.value === backing) {
-      modal.style.display = 'none';
-    }
+  Object(_backingCloseModal__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    modal: modal,
+    backing: backing
   });
 };
 
@@ -4398,6 +4430,49 @@ var onlyNumbersInput = function onlyNumbersInput(_ref) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (onlyNumbersInput);
+
+/***/ }),
+
+/***/ "./src/js/modules/picture.js":
+/*!***********************************!*\
+  !*** ./src/js/modules/picture.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var core_js_modules_es_array_concat__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.concat */ "./node_modules/core-js/modules/es.array.concat.js");
+/* harmony import */ var core_js_modules_es_array_concat__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_concat__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _backingCloseModal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./backingCloseModal */ "./src/js/modules/backingCloseModal.js");
+
+
+
+
+
+
+var picture = function picture(_ref) {
+  var imgClass = _ref.imgClass;
+  var pictures = document.querySelectorAll(imgClass);
+  var div = document.createElement('div');
+  div.style.cssText = "\n        display: none;\n        position: fixed;\n        top: 0;\n        left: 0;\n        width: 100vw;\n        height: 100vh;\n        text-align: center;\n        background: rgba(0, 0, 0, 0.5);\n        z-index: 10;\n    ";
+  document.body.append(div);
+  pictures.forEach(function (pic) {
+    return pic.addEventListener('click', function (e) {
+      e.preventDefault();
+      div.style.display = 'block';
+      div.innerHTML = "\n            <img \n                class=\"picture_modal\" \n                src=\"".concat(pic.parentElement.getAttribute('href'), "\" \n                alt=\"").concat(pic.getAttribute('alt'), "\"\n            />\n        ");
+    });
+  });
+  Object(_backingCloseModal__WEBPACK_IMPORTED_MODULE_2__["default"])({
+    modal: div,
+    backing: ''
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (picture);
 
 /***/ }),
 

@@ -5,6 +5,7 @@ import form from './modules/form';
 import tabs from './modules/tabs';
 import calc from './modules/calc';
 import timer from './modules/timer';
+import picture from './modules/picture';
 import onlyNumbersInput from './modules/onlyNumbersInput';
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -76,6 +77,11 @@ window.addEventListener('DOMContentLoaded', () => {
         hours: '#hours',
         minutes: '#minutes',
         seconds: '#seconds',
+    });
+
+    // ------------------------- Picture -------------------------
+    picture({
+        imgClass: '.preview'
     });
 
     // ------------------------- onlyNumbersInput -------------------------
