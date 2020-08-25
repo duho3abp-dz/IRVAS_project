@@ -1,16 +1,16 @@
 'use strict';
 
 import postData from '../services/servise';
+import modal from './modal';
 import spinner from './spinner';
 import success from './success';
 import error from './error';
 
-const requestForm = ({forms, phoneInputName}) => {
+const form = ({forms}) => {
     
     const url = 'http://localhost:3000',
           path = '/request',
-          allForms = document.querySelectorAll(forms),
-          allPhonesInput = document.getElementsByName(phoneInputName);
+          allForms = document.querySelectorAll(forms);
 
     const responseProcessing = (elem) => {
         spinner.style.display = 'none';
@@ -19,14 +19,11 @@ const requestForm = ({forms, phoneInputName}) => {
 
         setTimeout(() => {
             elem.style.display = 'none';
+            modal({
+                close: true
+            });
         }, 2000);
     };
-
-    allPhonesInput.forEach(input => input.addEventListener('keydown', e => {
-        if (! +e.key && e.key !== 'Backspace' && +e.key !== 0) {
-            e.preventDefault();
-        }
-    }));
 
     allForms.forEach(form => form.addEventListener('submit', e => {
         e.preventDefault();
@@ -46,4 +43,4 @@ const requestForm = ({forms, phoneInputName}) => {
 
 };
 
-export default requestForm;
+export default form;

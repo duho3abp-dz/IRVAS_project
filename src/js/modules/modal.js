@@ -1,12 +1,33 @@
 'use strict';
 
-const modal = ({button, modalWindow, modalCloseButton, backing}) => {
+const modal = ({button, modalWindow, modalCloseButton, backing, close, allModalWindowsClass = [
+    '.popup',
+    '.popup_engineer',
+    '.popup_calc',
+    '.popup_calc_profile',
+    '.popup_calc_end'
+]}) => {
     
     const btns = document.querySelectorAll(button),
           modal = document.querySelector(modalWindow),
           closeBtn = document.querySelector(modalCloseButton);
 
-    btns.forEach(btn => btn.addEventListener('click', () => modal.style.display = 'flex'));
+    const closingAllModals = () => {
+        allModalWindowsClass.forEach(modalClass => {
+            document.querySelector(modalClass).style.display = 'none';
+        });
+    };
+    
+    if (close) {
+        closingAllModals();
+        return;
+    }
+
+    btns.forEach(btn => btn.addEventListener('click', () => {
+        closingAllModals();
+
+        modal.style.display = 'flex';
+    }));
 
     closeBtn.addEventListener('click', () => modal.style.display = 'none');
 
