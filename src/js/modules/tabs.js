@@ -8,7 +8,7 @@ const tabs = ({tabsBtnClass, tabsContentClass, activeClass}) => {
     btns.forEach((btn, i) => {
         
         if (btn.classList.contains(activeClass)) {
-            tabsContent[i].style.display = 'flex';
+            tabsContent[i].style.display = 'block';
         }
 
         btn.addEventListener('click', () => {
@@ -17,7 +17,7 @@ const tabs = ({tabsBtnClass, tabsContentClass, activeClass}) => {
             tabsContent.forEach(elem => elem.style.display = 'none');
     
             btn.classList.add(activeClass);
-            tabsContent[i].style.display = 'flex';
+            tabsContent[i].style.display = 'block';
             
         });
     });

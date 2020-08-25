@@ -51,6 +51,11 @@ window.addEventListener('DOMContentLoaded', () => {
         tabsContentClass: '.big_balcon_icons_img',
         activeClass: 'do_image_more'
     });
+    tabs({
+        tabsBtnClass: '.no_click',
+        tabsContentClass: '.decoration_slider_tab',
+        activeClass: 'after_click'
+    });
 
     // ------------------------- Form -------------------------
     form({

@@ -499,6 +499,8 @@ textarea:focus {
 
 .decoration_item {
   text-align: center;
+  width: 25%;
+  float: left;
 }
 
 .decoration_item a {

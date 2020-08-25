@@ -4136,6 +4136,11 @@ window.addEventListener('DOMContentLoaded', function () {
     tabsBtnClass: '.balcon_icons_img',
     tabsContentClass: '.big_balcon_icons_img',
     activeClass: 'do_image_more'
+  });
+  Object(_modules_tabs__WEBPACK_IMPORTED_MODULE_2__["default"])({
+    tabsBtnClass: '.no_click',
+    tabsContentClass: '.decoration_slider_tab',
+    activeClass: 'after_click'
   }); // ------------------------- Form -------------------------
 
   Object(_modules_form__WEBPACK_IMPORTED_MODULE_1__["default"])({
@@ -4453,7 +4458,7 @@ var tabs = function tabs(_ref) {
       tabsContent = document.querySelectorAll(tabsContentClass);
   btns.forEach(function (btn, i) {
     if (btn.classList.contains(activeClass)) {
-      tabsContent[i].style.display = 'flex';
+      tabsContent[i].style.display = 'block';
     }
 
     btn.addEventListener('click', function () {
@@ -4464,7 +4469,7 @@ var tabs = function tabs(_ref) {
         return elem.style.display = 'none';
       });
       btn.classList.add(activeClass);
-      tabsContent[i].style.display = 'flex';
+      tabsContent[i].style.display = 'block';
     });
   });
 };
