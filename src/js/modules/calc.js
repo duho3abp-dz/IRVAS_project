@@ -2,17 +2,21 @@
 
 const calc = ({topCheckboxId, bottomCheckboxId}) => {
 
-    const topCheckbox = document.querySelector(topCheckboxId),
-          bottomCheckbox = document.querySelector(bottomCheckboxId);
+    topCheckboxId.forEach((item, i) => {
 
-    const toggleCheckbox = (a, b) => a.addEventListener('click', () => {
-        if (b.previousElementSibling.checked) {
-            b.previousElementSibling.checked = false;
-        }
+        const topCheckbox = document.querySelector(topCheckboxId[i]),
+              bottomCheckbox = document.querySelector(bottomCheckboxId[i]);
+
+        const toggleCheckbox = (a, b) => a.addEventListener('click', () => {
+            if (b.previousElementSibling.checked) {
+                b.previousElementSibling.checked = false;
+            }
+        });
+
+        toggleCheckbox(topCheckbox, bottomCheckbox);
+        toggleCheckbox(bottomCheckbox, topCheckbox);
+
     });
-
-    toggleCheckbox(topCheckbox, bottomCheckbox);
-    toggleCheckbox(bottomCheckbox, topCheckbox);
 
 };
 

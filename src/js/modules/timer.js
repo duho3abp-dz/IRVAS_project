@@ -1,32 +1,42 @@
 'use strict';
 
-const timer = ({trgetDate, days, hours, minutes, seconds}) => {
+const timer = ({
+      targetDate, 
+      days, 
+      hours, 
+      minutes, 
+      seconds
+}) => {
 
-    const target = new Date(trgetDate),
-          timeZoneDifference = -target.getTimezoneOffset() * 60 * 1000;
+      targetDate.forEach((item, i) => {
 
-    const day = document.querySelector(days),
-          hour = document.querySelector(hours),
-          minute = document.querySelector(minutes),
-          second = document.querySelector(seconds);
+            const target = new Date(targetDate[i]),
+                  timeZoneDifference = -target.getTimezoneOffset() * 60 * 1000;
 
-    const numberCheck = num => +num < 10 && +num >= 0 ? `0${num}` : num ;
+            const day = document.querySelector(days[i]),
+                  hour = document.querySelector(hours[i]),
+                  minute = document.querySelector(minutes[i]),
+                  second = document.querySelector(seconds[i]);
 
-    const сountdown = () => {
-        const total = target - new Date() - timeZoneDifference,
-              days = Math.floor(total / (1000 * 60 * 60 * 24)),
-              hours = Math.floor((total / (1000 * 60 * 60)) % 24),
-              minutes = Math.floor((total / (1000 * 60)) % 60),
-              seconds = Math.floor((total / 1000) % 60);
+            const numberCheck = num => +num < 10 && +num >= 0 ? `0${num}` : num ;
 
-        day.textContent = numberCheck(days);
-        hour.textContent = numberCheck(hours);
-        minute.textContent = numberCheck(minutes);
-        second.textContent = numberCheck(seconds);
-    };  
-    сountdown();
+            const сountdown = () => {
+                  const total = target - new Date() - timeZoneDifference,
+                        days = Math.floor(total / (1000 * 60 * 60 * 24)),
+                        hours = Math.floor((total / (1000 * 60 * 60)) % 24),
+                        minutes = Math.floor((total / (1000 * 60)) % 60),
+                        seconds = Math.floor((total / 1000) % 60);
 
-    setInterval(сountdown, 1000);
+                  day.textContent = numberCheck(days);
+                  hour.textContent = numberCheck(hours);
+                  minute.textContent = numberCheck(minutes);
+                  second.textContent = numberCheck(seconds);
+            };  
+            сountdown();
+
+            setInterval(сountdown, 1000);
+
+      });
 
 };
 

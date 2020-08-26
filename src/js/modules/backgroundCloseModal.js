@@ -1,8 +1,8 @@
 'use strict';
 
-const backgroundCloseModal = ({modal, background}) => {
+const backgroundCloseModal = ({modal, bg}) => {
     modal.addEventListener('click', ({target}) => {
-        if(target.classList.value === background) {
+        if(target.classList.value === bg) {
             modal.style.display = 'none';
         }
     });

@@ -4088,8 +4088,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_calc__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/calc */ "./src/js/modules/calc.js");
 /* harmony import */ var _modules_timer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/timer */ "./src/js/modules/timer.js");
 /* harmony import */ var _modules_picture__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/picture */ "./src/js/modules/picture.js");
-/* harmony import */ var _modules_onlyNumbersInput__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/onlyNumbersInput */ "./src/js/modules/onlyNumbersInput.js");
-
 
 
 
@@ -4099,82 +4097,51 @@ __webpack_require__.r(__webpack_exports__);
 
 
 window.addEventListener('DOMContentLoaded', function () {
-  // ------------------------- Modal -------------------------
-  Object(_modules_modal__WEBPACK_IMPORTED_MODULE_0__["default"])({
-    button: '.header_btn',
-    modalWindow: '.popup_engineer',
-    modalCloseButton: '.popup_engineer .popup_close',
-    background: 'popup_engineer'
-  });
-  Object(_modules_modal__WEBPACK_IMPORTED_MODULE_0__["default"])({
-    button: '.phone_link',
-    modalWindow: '.popup',
-    modalCloseButton: '.popup .popup_close',
-    background: 'popup',
+  // ------------ * DATA * ------------
+  // * Modal Data *
+  var modalData = {
+    buttons: ['.header_btn', '.phone_link', '.glazing_price_btn', '.popup_calc_button', '.popup_calc_profile_button'],
+    modalCloseButtons: ['.popup_engineer .popup_close', '.popup .popup_close', '.popup_calc_close', '.popup_calc_profile_close', '.popup_calc_end_close'],
+    backgrounds: ['popup_engineer', 'popup', 'popup_calc', 'popup_calc_profile', 'popup_calc_end_close'],
+    modalTimerClass: '.popup',
     timer: 60000
-  });
-  Object(_modules_modal__WEBPACK_IMPORTED_MODULE_0__["default"])({
-    button: '.glazing_price_btn',
-    modalWindow: '.popup_calc',
-    modalCloseButton: '.popup_calc_close',
-    background: 'popup_calc'
-  });
-  Object(_modules_modal__WEBPACK_IMPORTED_MODULE_0__["default"])({
-    button: '.popup_calc_button',
-    modalWindow: '.popup_calc_profile',
-    modalCloseButton: '.popup_calc_profile_close',
-    background: 'popup_calc_profile'
-  });
-  Object(_modules_modal__WEBPACK_IMPORTED_MODULE_0__["default"])({
-    button: '.popup_calc_profile_button',
-    modalWindow: '.popup_calc_end',
-    modalCloseButton: '.popup_calc_end_close',
-    background: 'popup_calc_end'
-  }); // ------------------------- Tabs -------------------------
+  }; // * Tabs Data *
 
-  Object(_modules_tabs__WEBPACK_IMPORTED_MODULE_2__["default"])({
-    tabsBtnClass: '.glazing_block',
-    tabsContentClass: '.glazing_content',
-    activeClass: 'active'
-  });
-  Object(_modules_tabs__WEBPACK_IMPORTED_MODULE_2__["default"])({
-    tabsBtnClass: '.balcon_icons_img',
-    tabsContentClass: '.big_balcon_icons_img',
-    activeClass: 'do_image_more'
-  });
-  Object(_modules_tabs__WEBPACK_IMPORTED_MODULE_2__["default"])({
-    tabsBtnClass: '.no_click',
-    tabsContentClass: '.decoration_slider_tab',
-    activeClass: 'after_click'
-  }); // ------------------------- Form -------------------------
+  var tabsData = {
+    tabsBtnClass: ['.glazing_block', '.balcon_icons_img', '.no_click'],
+    tabsContentClass: ['.glazing_content', '.big_balcon_icons_img', '.decoration_slider_tab'],
+    activeClass: ['active', 'do_image_more', 'after_click']
+  }; // * Forms Data *
 
-  Object(_modules_form__WEBPACK_IMPORTED_MODULE_1__["default"])({
-    forms: 'form'
-  }); // ------------------------- Calc -------------------------
+  var formsData = {
+    forms: ['form'],
+    onlyNumbersInputName: ['user_phone'],
+    onlyNumbersInputClass: ['.popup_calc .form-control']
+  }; // * Calc Data *
 
-  Object(_modules_calc__WEBPACK_IMPORTED_MODULE_3__["default"])({
-    topCheckboxId: '#cold',
-    bottomCheckboxId: '#warm'
-  }); // ------------------------- Timer -------------------------
+  var calcData = {
+    topCheckboxId: ['#cold'],
+    bottomCheckboxId: ['#warm']
+  }; // * Timer Data *
 
-  Object(_modules_timer__WEBPACK_IMPORTED_MODULE_4__["default"])({
-    trgetDate: '2020-09-19',
-    days: '#days',
-    hours: '#hours',
-    minutes: '#minutes',
-    seconds: '#seconds'
-  }); // ------------------------- Picture -------------------------
+  var timerData = {
+    targetDate: ['2020-09-19'],
+    days: ['#days'],
+    hours: ['#hours'],
+    minutes: ['#minutes'],
+    seconds: ['#seconds']
+  }; // * Picture Data *
 
-  Object(_modules_picture__WEBPACK_IMPORTED_MODULE_5__["default"])({
-    imgClass: '.preview'
-  }); // ------------------------- onlyNumbersInput -------------------------
+  var pictureData = {
+    imgClass: ['.preview']
+  }; // ------------ * Running Scripts * ------------
 
-  Object(_modules_onlyNumbersInput__WEBPACK_IMPORTED_MODULE_6__["default"])({
-    inputName: 'user_phone'
-  });
-  Object(_modules_onlyNumbersInput__WEBPACK_IMPORTED_MODULE_6__["default"])({
-    inputClass: '.popup_calc .form-control'
-  });
+  Object(_modules_modal__WEBPACK_IMPORTED_MODULE_0__["default"])(modalData);
+  Object(_modules_tabs__WEBPACK_IMPORTED_MODULE_2__["default"])(tabsData);
+  Object(_modules_form__WEBPACK_IMPORTED_MODULE_1__["default"])(formsData);
+  Object(_modules_calc__WEBPACK_IMPORTED_MODULE_3__["default"])(calcData);
+  Object(_modules_timer__WEBPACK_IMPORTED_MODULE_4__["default"])(timerData);
+  Object(_modules_picture__WEBPACK_IMPORTED_MODULE_5__["default"])(pictureData);
 });
 
 /***/ }),
@@ -4192,11 +4159,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var backgroundCloseModal = function backgroundCloseModal(_ref) {
   var modal = _ref.modal,
-      background = _ref.background;
+      bg = _ref.bg;
   modal.addEventListener('click', function (_ref2) {
     var target = _ref2.target;
 
-    if (target.classList.value === background) {
+    if (target.classList.value === bg) {
       modal.style.display = 'none';
     }
   });
@@ -4215,24 +4182,30 @@ var backgroundCloseModal = function backgroundCloseModal(_ref) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__);
+
+
 
 
 var calc = function calc(_ref) {
   var topCheckboxId = _ref.topCheckboxId,
       bottomCheckboxId = _ref.bottomCheckboxId;
-  var topCheckbox = document.querySelector(topCheckboxId),
-      bottomCheckbox = document.querySelector(bottomCheckboxId);
+  topCheckboxId.forEach(function (item, i) {
+    var topCheckbox = document.querySelector(topCheckboxId[i]),
+        bottomCheckbox = document.querySelector(bottomCheckboxId[i]);
 
-  var toggleCheckbox = function toggleCheckbox(a, b) {
-    return a.addEventListener('click', function () {
-      if (b.previousElementSibling.checked) {
-        b.previousElementSibling.checked = false;
-      }
-    });
-  };
+    var toggleCheckbox = function toggleCheckbox(a, b) {
+      return a.addEventListener('click', function () {
+        if (b.previousElementSibling.checked) {
+          b.previousElementSibling.checked = false;
+        }
+      });
+    };
 
-  toggleCheckbox(topCheckbox, bottomCheckbox);
-  toggleCheckbox(bottomCheckbox, topCheckbox);
+    toggleCheckbox(topCheckbox, bottomCheckbox);
+    toggleCheckbox(bottomCheckbox, topCheckbox);
+  });
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (calc);
@@ -4285,6 +4258,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _spinner__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./spinner */ "./src/js/modules/spinner.js");
 /* harmony import */ var _success__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./success */ "./src/js/modules/success.js");
 /* harmony import */ var _error__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./error */ "./src/js/modules/error.js");
+/* harmony import */ var _onlyNumbersInput__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./onlyNumbersInput */ "./src/js/modules/onlyNumbersInput.js");
+
 
 
 
@@ -4299,34 +4274,48 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var form = function form(_ref) {
-  var forms = _ref.forms;
-  var url = 'http://localhost:3000',
-      path = '/request',
-      allForms = document.querySelectorAll(forms);
+  var forms = _ref.forms,
+      onlyNumbersInputName = _ref.onlyNumbersInputName,
+      onlyNumbersInputClass = _ref.onlyNumbersInputClass;
+  onlyNumbersInputName.forEach(function (inputName) {
+    return Object(_onlyNumbersInput__WEBPACK_IMPORTED_MODULE_10__["default"])({
+      inputName: inputName
+    });
+  });
+  onlyNumbersInputClass.forEach(function (inputClass) {
+    return Object(_onlyNumbersInput__WEBPACK_IMPORTED_MODULE_10__["default"])({
+      inputClass: inputClass
+    });
+  });
+  forms.forEach(function (form) {
+    var url = 'http://localhost:3000',
+        path = '/request',
+        allForms = document.querySelectorAll(form);
 
-  var responseProcessing = function responseProcessing(elem) {
-    _spinner__WEBPACK_IMPORTED_MODULE_7__["default"].style.display = 'none';
-    elem.style.display = '';
-    document.body.append(elem);
-    setTimeout(function () {
-      elem.style.display = 'none';
-      Object(_modal__WEBPACK_IMPORTED_MODULE_6__["default"])({
-        close: true
-      });
-    }, 2000);
-  };
+    var responseProcessing = function responseProcessing(elem) {
+      _spinner__WEBPACK_IMPORTED_MODULE_7__["default"].style.display = 'none';
+      elem.style.display = '';
+      document.body.append(elem);
+      setTimeout(function () {
+        elem.style.display = 'none';
+        Object(_modal__WEBPACK_IMPORTED_MODULE_6__["default"])({
+          close: true
+        });
+      }, 2000);
+    };
 
-  allForms.forEach(function (form) {
-    return form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      document.body.append(_spinner__WEBPACK_IMPORTED_MODULE_7__["default"]);
-      _spinner__WEBPACK_IMPORTED_MODULE_7__["default"].style.display = '';
-      var data = Object.fromEntries(new FormData(form).entries());
-      Object(_services_servise__WEBPACK_IMPORTED_MODULE_5__["default"])(url, data, path).then(function (res) {
-        form.reset();
-        responseProcessing(_success__WEBPACK_IMPORTED_MODULE_8__["default"]);
-      }).catch(function (err) {
-        return responseProcessing(_error__WEBPACK_IMPORTED_MODULE_9__["default"]);
+    allForms.forEach(function (form) {
+      return form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        document.body.append(_spinner__WEBPACK_IMPORTED_MODULE_7__["default"]);
+        _spinner__WEBPACK_IMPORTED_MODULE_7__["default"].style.display = '';
+        var data = Object.fromEntries(new FormData(form).entries());
+        Object(_services_servise__WEBPACK_IMPORTED_MODULE_5__["default"])(url, data, path).then(function (res) {
+          form.reset();
+          responseProcessing(_success__WEBPACK_IMPORTED_MODULE_8__["default"]);
+        }).catch(function (err) {
+          return responseProcessing(_error__WEBPACK_IMPORTED_MODULE_9__["default"]);
+        });
       });
     });
   });
@@ -4354,20 +4343,24 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var modal = function modal(_ref) {
-  var button = _ref.button,
-      modalWindow = _ref.modalWindow,
-      modalCloseButton = _ref.modalCloseButton,
-      background = _ref.background,
+  var buttons = _ref.buttons,
+      modalCloseButtons = _ref.modalCloseButtons,
+      backgrounds = _ref.backgrounds,
       close = _ref.close,
       timer = _ref.timer,
-      _ref$allModalWindowsC = _ref.allModalWindowsClass,
-      allModalWindowsClass = _ref$allModalWindowsC === void 0 ? ['.popup', '.popup_engineer', '.popup_calc', '.popup_calc_profile', '.popup_calc_end'] : _ref$allModalWindowsC;
-  var btns = document.querySelectorAll(button),
-      modal = document.querySelector(modalWindow),
-      closeBtn = document.querySelector(modalCloseButton);
+      modalTimerClass = _ref.modalTimerClass,
+      _ref$modalWindows = _ref.modalWindows,
+      modalWindows = _ref$modalWindows === void 0 ? ['.popup_engineer', '.popup', '.popup_calc', '.popup_calc_profile', '.popup_calc_end'] : _ref$modalWindows;
+  var timerOpenModal;
+
+  if (modalTimerClass && timer) {
+    timerOpenModal = setTimeout(function () {
+      document.querySelector(modalTimerClass).style.display = 'flex';
+    }, timer);
+  }
 
   var closingAllModals = function closingAllModals() {
-    allModalWindowsClass.forEach(function (modalClass) {
+    modalWindows.forEach(function (modalClass) {
       document.querySelector(modalClass).style.display = 'none';
     });
   };
@@ -4377,24 +4370,25 @@ var modal = function modal(_ref) {
     return;
   }
 
-  if (timer) {
-    setTimeout(function () {
-      return modal.style.display = 'flex';
-    }, timer);
-  }
-
-  btns.forEach(function (btn) {
-    return btn.addEventListener('click', function () {
-      closingAllModals();
-      modal.style.display = 'flex';
+  buttons.forEach(function (item, i) {
+    var btns = document.querySelectorAll(buttons[i]),
+        modal = document.querySelector(modalWindows[i]),
+        closeBtn = document.querySelector(modalCloseButtons[i]),
+        bg = backgrounds[i];
+    btns.forEach(function (btn) {
+      return btn.addEventListener('click', function () {
+        closingAllModals();
+        clearInterval(timerOpenModal);
+        modal.style.display = 'flex';
+      });
     });
-  });
-  closeBtn.addEventListener('click', function () {
-    return modal.style.display = 'none';
-  });
-  Object(_backgroundCloseModal__WEBPACK_IMPORTED_MODULE_1__["default"])({
-    modal: modal,
-    background: background
+    closeBtn.addEventListener('click', function () {
+      return modal.style.display = 'none';
+    });
+    Object(_backgroundCloseModal__WEBPACK_IMPORTED_MODULE_1__["default"])({
+      modal: modal,
+      bg: bg
+    });
   });
 };
 
@@ -4463,20 +4457,22 @@ __webpack_require__.r(__webpack_exports__);
 
 var picture = function picture(_ref) {
   var imgClass = _ref.imgClass;
-  var pictures = document.querySelectorAll(imgClass);
-  var div = document.createElement('div');
-  div.style.cssText = "\n        display: none;\n        position: fixed;\n        top: 0;\n        left: 0;\n        width: 100vw;\n        height: 100vh;\n        text-align: center;\n        background: rgba(0, 0, 0, 0.5);\n        z-index: 10;\n    ";
-  document.body.append(div);
-  pictures.forEach(function (pic) {
-    return pic.addEventListener('click', function (e) {
-      e.preventDefault();
-      div.style.display = 'block';
-      div.innerHTML = "\n            <img \n                class=\"picture_modal\" \n                src=\"".concat(pic.parentElement.getAttribute('href'), "\" \n                alt=\"").concat(pic.getAttribute('alt'), "\"\n            />\n        ");
+  imgClass.forEach(function (img) {
+    var pictures = document.querySelectorAll(img);
+    var div = document.createElement('div');
+    div.style.cssText = "\n            display: none;\n            position: fixed;\n            top: 0;\n            left: 0;\n            width: 100vw;\n            height: 100vh;\n            text-align: center;\n            background: rgba(0, 0, 0, 0.5);\n            z-index: 10;\n        ";
+    document.body.append(div);
+    pictures.forEach(function (pic) {
+      return pic.addEventListener('click', function (e) {
+        e.preventDefault();
+        div.style.display = 'block';
+        div.innerHTML = "\n                <img \n                    class=\"picture_modal\" \n                    src=\"".concat(pic.parentElement.getAttribute('href'), "\" \n                    alt=\"").concat(pic.getAttribute('alt'), "\"\n                />\n            ");
+      });
     });
-  });
-  Object(_backgroundCloseModal__WEBPACK_IMPORTED_MODULE_2__["default"])({
-    modal: div,
-    background: ''
+    Object(_backgroundCloseModal__WEBPACK_IMPORTED_MODULE_2__["default"])({
+      modal: div,
+      bg: ''
+    });
   });
 };
 
@@ -4547,22 +4543,25 @@ var tabs = function tabs(_ref) {
   var tabsBtnClass = _ref.tabsBtnClass,
       tabsContentClass = _ref.tabsContentClass,
       activeClass = _ref.activeClass;
-  var btns = document.querySelectorAll(tabsBtnClass),
-      tabsContent = document.querySelectorAll(tabsContentClass);
-  btns.forEach(function (btn, i) {
-    if (btn.classList.contains(activeClass)) {
-      tabsContent[i].style.display = 'block';
-    }
+  tabsBtnClass.forEach(function (item, ind) {
+    var btns = document.querySelectorAll(tabsBtnClass[ind]),
+        tabsContent = document.querySelectorAll(tabsContentClass[ind]),
+        active = activeClass[ind];
+    btns.forEach(function (btn, i) {
+      if (btn.classList.contains(active)) {
+        tabsContent[i].style.display = 'block';
+      }
 
-    btn.addEventListener('click', function () {
-      btns.forEach(function (elem) {
-        return elem.classList.remove(activeClass);
+      btn.addEventListener('click', function () {
+        btns.forEach(function (elem) {
+          return elem.classList.remove(active);
+        });
+        tabsContent.forEach(function (elem) {
+          return elem.style.display = 'none';
+        });
+        btn.classList.add(active);
+        tabsContent[i].style.display = 'block';
       });
-      tabsContent.forEach(function (elem) {
-        return elem.style.display = 'none';
-      });
-      btn.classList.add(activeClass);
-      tabsContent[i].style.display = 'block';
     });
   });
 };
@@ -4580,39 +4579,45 @@ var tabs = function tabs(_ref) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__);
+
+
 
 
 var timer = function timer(_ref) {
-  var trgetDate = _ref.trgetDate,
+  var targetDate = _ref.targetDate,
       days = _ref.days,
       hours = _ref.hours,
       minutes = _ref.minutes,
       seconds = _ref.seconds;
-  var target = new Date(trgetDate),
-      timeZoneDifference = -target.getTimezoneOffset() * 60 * 1000;
-  var day = document.querySelector(days),
-      hour = document.querySelector(hours),
-      minute = document.querySelector(minutes),
-      second = document.querySelector(seconds);
+  targetDate.forEach(function (item, i) {
+    var target = new Date(targetDate[i]),
+        timeZoneDifference = -target.getTimezoneOffset() * 60 * 1000;
+    var day = document.querySelector(days[i]),
+        hour = document.querySelector(hours[i]),
+        minute = document.querySelector(minutes[i]),
+        second = document.querySelector(seconds[i]);
 
-  var numberCheck = function numberCheck(num) {
-    return +num < 10 && +num >= 0 ? "0".concat(num) : num;
-  };
+    var numberCheck = function numberCheck(num) {
+      return +num < 10 && +num >= 0 ? "0".concat(num) : num;
+    };
 
-  var сountdown = function сountdown() {
-    var total = target - new Date() - timeZoneDifference,
-        days = Math.floor(total / (1000 * 60 * 60 * 24)),
-        hours = Math.floor(total / (1000 * 60 * 60) % 24),
-        minutes = Math.floor(total / (1000 * 60) % 60),
-        seconds = Math.floor(total / 1000 % 60);
-    day.textContent = numberCheck(days);
-    hour.textContent = numberCheck(hours);
-    minute.textContent = numberCheck(minutes);
-    second.textContent = numberCheck(seconds);
-  };
+    var сountdown = function сountdown() {
+      var total = target - new Date() - timeZoneDifference,
+          days = Math.floor(total / (1000 * 60 * 60 * 24)),
+          hours = Math.floor(total / (1000 * 60 * 60) % 24),
+          minutes = Math.floor(total / (1000 * 60) % 60),
+          seconds = Math.floor(total / 1000 % 60);
+      day.textContent = numberCheck(days);
+      hour.textContent = numberCheck(hours);
+      minute.textContent = numberCheck(minutes);
+      second.textContent = numberCheck(seconds);
+    };
 
-  сountdown();
-  setInterval(сountdown, 1000);
+    сountdown();
+    setInterval(сountdown, 1000);
+  });
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (timer);

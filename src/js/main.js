@@ -6,91 +6,91 @@ import tabs from './modules/tabs';
 import calc from './modules/calc';
 import timer from './modules/timer';
 import picture from './modules/picture';
-import onlyNumbersInput from './modules/onlyNumbersInput';
 
 window.addEventListener('DOMContentLoaded', () => {
 
-    // ------------------------- Modal -------------------------
-    modal({
-        button: '.header_btn',
-        modalWindow: '.popup_engineer',
-        modalCloseButton: '.popup_engineer .popup_close',
-        background: 'popup_engineer'
-    });
-    modal({
-        button: '.phone_link',
-        modalWindow: '.popup',
-        modalCloseButton: '.popup .popup_close',
-        background: 'popup',
+    // ------------ * DATA * ------------
+
+    // * Modal Data *
+    const modalData = {
+        buttons: [
+            '.header_btn',
+            '.phone_link',
+            '.glazing_price_btn',
+            '.popup_calc_button',
+            '.popup_calc_profile_button'
+        ],
+        modalCloseButtons: [
+            '.popup_engineer .popup_close',
+            '.popup .popup_close',
+            '.popup_calc_close',
+            '.popup_calc_profile_close',
+            '.popup_calc_end_close',
+        ],
+        backgrounds: [
+            'popup_engineer',
+            'popup',
+            'popup_calc',
+            'popup_calc_profile',
+            'popup_calc_end_close'
+        ],
+        modalTimerClass: '.popup',
         timer: 60000
-    });
-    modal({
-        button: '.glazing_price_btn',
-        modalWindow: '.popup_calc',
-        modalCloseButton: '.popup_calc_close',
-        background: 'popup_calc'
-    });
-    modal({
-        button: '.popup_calc_button',
-        modalWindow: '.popup_calc_profile',
-        modalCloseButton: '.popup_calc_profile_close',
-        background: 'popup_calc_profile'
-    });
-    modal({
-        button: '.popup_calc_profile_button',
-        modalWindow: '.popup_calc_end',
-        modalCloseButton: '.popup_calc_end_close',
-        background: 'popup_calc_end'
-    });
+    };
 
-    // ------------------------- Tabs -------------------------
-    tabs({
-        tabsBtnClass: '.glazing_block',
-        tabsContentClass: '.glazing_content',
-        activeClass: 'active'
-    });
-    tabs({
-        tabsBtnClass: '.balcon_icons_img',
-        tabsContentClass: '.big_balcon_icons_img',
-        activeClass: 'do_image_more'
-    });
-    tabs({
-        tabsBtnClass: '.no_click',
-        tabsContentClass: '.decoration_slider_tab',
-        activeClass: 'after_click'
-    });
+    // * Tabs Data *
+    const tabsData = {
+        tabsBtnClass: [
+            '.glazing_block',
+            '.balcon_icons_img',
+            '.no_click'
+        ],
+        tabsContentClass: [
+            '.glazing_content',
+            '.big_balcon_icons_img',
+            '.decoration_slider_tab'
+        ],
+        activeClass: [
+            'active',
+            'do_image_more',
+            'after_click'
+        ]
+    };
 
-    // ------------------------- Form -------------------------
-    form({
-        forms: 'form'
-    });
+    // * Forms Data *
+    const formsData = {
+        forms: ['form'],
+        onlyNumbersInputName: ['user_phone'],
+        onlyNumbersInputClass: ['.popup_calc .form-control']
+    };
 
-    // ------------------------- Calc -------------------------
-    calc({
-        topCheckboxId: '#cold',
-        bottomCheckboxId: '#warm'
-    });
+    // * Calc Data *
+    const calcData = {
+        topCheckboxId: ['#cold'],
+        bottomCheckboxId: ['#warm']
+    };
 
-    // ------------------------- Timer -------------------------
-    timer({
-        trgetDate: '2020-09-19',
-        days: '#days',
-        hours: '#hours',
-        minutes: '#minutes',
-        seconds: '#seconds',
-    });
+    // * Timer Data *
+    const timerData = {
+        targetDate: ['2020-09-19'],
+        days: ['#days'],
+        hours: ['#hours'],
+        minutes: ['#minutes'],
+        seconds: ['#seconds'],
+    };
 
-    // ------------------------- Picture -------------------------
-    picture({
-        imgClass: '.preview'
-    });
+    // * Picture Data *
+    const pictureData = {
+        imgClass: ['.preview']
+    };
 
-    // ------------------------- onlyNumbersInput -------------------------
-    onlyNumbersInput({
-        inputName: 'user_phone'
-    });
-    onlyNumbersInput({
-        inputClass: '.popup_calc .form-control'
-    });
+    
+    // ------------ * Running Scripts * ------------
+    modal(modalData);
+    tabs(tabsData);
+    form(formsData);
+    calc(calcData);
+    timer(timerData);
+    picture(pictureData);
 
 });

@@ -5,41 +5,53 @@ import modal from './modal';
 import spinner from './spinner';
 import success from './success';
 import error from './error';
+import onlyNumbersInput from './onlyNumbersInput';
 
-const form = ({forms}) => {
+const form = ({
+    forms, 
+    onlyNumbersInputName,
+    onlyNumbersInputClass
+}) => {
+
+    onlyNumbersInputName.forEach(inputName => onlyNumbersInput({inputName}));
+    onlyNumbersInputClass.forEach(inputClass => onlyNumbersInput({inputClass}));
     
-    const url = 'http://localhost:3000',
-          path = '/request',
-          allForms = document.querySelectorAll(forms);
+    forms.forEach(form => {
 
-    const responseProcessing = (elem) => {
-        spinner.style.display = 'none';
-        elem.style.display = '';
-        document.body.append(elem);
+        const url = 'http://localhost:3000',
+              path = '/request',
+              allForms = document.querySelectorAll(form);
 
-        setTimeout(() => {
-            elem.style.display = 'none';
-            modal({
-                close: true
-            });
-        }, 2000);
-    };
+        const responseProcessing = (elem) => {
+            spinner.style.display = 'none';
+            elem.style.display = '';
+            document.body.append(elem);
 
-    allForms.forEach(form => form.addEventListener('submit', e => {
-        e.preventDefault();
-        
-        document.body.append(spinner);
-        spinner.style.display = '';
+            setTimeout(() => {
+                elem.style.display = 'none';
+                modal({
+                    close: true
+                });
+            }, 2000);
+        };
 
-        const data = Object.fromEntries(new FormData(form).entries());
+        allForms.forEach(form => form.addEventListener('submit', e => {
+            e.preventDefault();
+            
+            document.body.append(spinner);
+            spinner.style.display = '';
 
-        postData(url, data, path)
-            .then(res => {
-                form.reset();
-                responseProcessing(success);
-            })
-            .catch(err => responseProcessing(error));
-    }));
+            const data = Object.fromEntries(new FormData(form).entries());
+
+            postData(url, data, path)
+                .then(res => {
+                    form.reset();
+                    responseProcessing(success);
+                })
+                .catch(err => responseProcessing(error));
+        }));
+
+    });
 
 };
 
