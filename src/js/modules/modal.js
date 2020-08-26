@@ -2,7 +2,7 @@
 
 import backgroundCloseModal from './backgroundCloseModal';
 
-const modal = ({button, modalWindow, modalCloseButton, background, close, allModalWindowsClass = [
+const modal = ({button, modalWindow, modalCloseButton, background, close, timer, allModalWindowsClass = [
     '.popup',
     '.popup_engineer',
     '.popup_calc',
@@ -23,6 +23,9 @@ const modal = ({button, modalWindow, modalCloseButton, background, close, allMod
     if (close) {
         closingAllModals();
         return;
+    }
+    if (timer) {
+        setTimeout(() => modal.style.display = 'flex', timer);
     }
 
     btns.forEach(btn => btn.addEventListener('click', () => {

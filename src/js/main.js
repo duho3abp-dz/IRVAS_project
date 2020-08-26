@@ -21,7 +21,8 @@ window.addEventListener('DOMContentLoaded', () => {
         button: '.phone_link',
         modalWindow: '.popup',
         modalCloseButton: '.popup .popup_close',
-        background: 'popup'
+        background: 'popup',
+        timer: 60000
     });
     modal({
         button: '.glazing_price_btn',

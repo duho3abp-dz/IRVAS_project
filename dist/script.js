@@ -4110,7 +4110,8 @@ window.addEventListener('DOMContentLoaded', function () {
     button: '.phone_link',
     modalWindow: '.popup',
     modalCloseButton: '.popup .popup_close',
-    background: 'popup'
+    background: 'popup',
+    timer: 60000
   });
   Object(_modules_modal__WEBPACK_IMPORTED_MODULE_0__["default"])({
     button: '.glazing_price_btn',
@@ -4358,6 +4359,7 @@ var modal = function modal(_ref) {
       modalCloseButton = _ref.modalCloseButton,
       background = _ref.background,
       close = _ref.close,
+      timer = _ref.timer,
       _ref$allModalWindowsC = _ref.allModalWindowsClass,
       allModalWindowsClass = _ref$allModalWindowsC === void 0 ? ['.popup', '.popup_engineer', '.popup_calc', '.popup_calc_profile', '.popup_calc_end'] : _ref$allModalWindowsC;
   var btns = document.querySelectorAll(button),
@@ -4373,6 +4375,12 @@ var modal = function modal(_ref) {
   if (close) {
     closingAllModals();
     return;
+  }
+
+  if (timer) {
+    setTimeout(function () {
+      return modal.style.display = 'flex';
+    }, timer);
   }
 
   btns.forEach(function (btn) {
