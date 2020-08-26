@@ -4,8 +4,7 @@ import backgroundCloseModal from './backgroundCloseModal';
 
 const modal = ({
     buttons, 
-    modalCloseButtons, 
-    backgrounds, 
+    modalCloseButtons,
     close, 
     timer,
     modalTimerClass,
@@ -22,6 +21,7 @@ const modal = ({
     if (modalTimerClass && timer) {
         timerOpenModal = setTimeout(() => {
             document.querySelector(modalTimerClass).style.display = 'flex';
+            document.body.style.overflow = 'hidden';
         }, timer);
     }
     
@@ -40,20 +40,24 @@ const modal = ({
 
         const btns = document.querySelectorAll(buttons[i]),
               modal = document.querySelector(modalWindows[i]),
-              closeBtn = document.querySelector(modalCloseButtons[i]),
-              bg = backgrounds[i];
+              closeBtn = document.querySelector(modalCloseButtons[i]);
 
-        btns.forEach(btn => btn.addEventListener('click', () => {
+        btns.forEach(btn => btn.addEventListener('click', e => {
+            if (e.target) {e.preventDefault();}
+
             closingAllModals();
-
             clearInterval(timerOpenModal);
-
             modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+
         }));
 
-        closeBtn.addEventListener('click', () => modal.style.display = 'none');
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        });
 
-        backgroundCloseModal({modal, bg});
+        backgroundCloseModal({modal});
         
     });
 

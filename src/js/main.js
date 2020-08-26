@@ -1,5 +1,7 @@
 'use strict';
 
+import './slider';
+
 import modal from './modules/modal';
 import form from './modules/form';
 import tabs from './modules/tabs';
@@ -27,13 +29,6 @@ window.addEventListener('DOMContentLoaded', () => {
             '.popup_calc_profile_close',
             '.popup_calc_end_close',
         ],
-        backgrounds: [
-            'popup_engineer',
-            'popup',
-            'popup_calc',
-            'popup_calc_profile',
-            'popup_calc_end_close'
-        ],
         modalTimerClass: '.popup',
         timer: 60000
     };
@@ -60,8 +55,10 @@ window.addEventListener('DOMContentLoaded', () => {
     // * Forms Data *
     const formsData = {
         forms: ['form'],
-        onlyNumbersInputName: ['user_phone'],
-        onlyNumbersInputClass: ['.popup_calc .form-control']
+        onlyNumbersInputClass: [
+            '.form_input-user_phone',
+            '.popup_calc .form-control'
+        ]
     };
 
     // * Calc Data *

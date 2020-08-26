@@ -2,13 +2,7 @@
 
 const onlyNumbersInput = ({inputClass, inputName}) => {
 
-    let allInput;
-
-    if (inputClass) {
-        allInput = document.querySelectorAll(inputClass);        
-    } else {
-        allInput = document.getElementsByName(inputName);    
-    }
+    const allInput = document.querySelectorAll(inputClass);
 
     allInput.forEach(input => input.addEventListener('keydown', e => {
         if (! +e.key && e.key !== 'Backspace' && +e.key !== 0) {

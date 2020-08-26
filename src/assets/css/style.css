@@ -1833,6 +1833,10 @@ textarea:focus {
   }
 }
 
+.balcon_icons_img img {
+  cursor: pointer;
+}
+
 /* small devices, tablets */
 @media only screen and (max-width: 768px) {
   .animated {

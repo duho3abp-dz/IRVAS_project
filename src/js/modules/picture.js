@@ -24,7 +24,9 @@ const picture = ({imgClass}) => {
         
         pictures.forEach(pic => pic.addEventListener('click', e => {
             e.preventDefault();
-    
+
+            document.body.style.overflow = 'hidden';
+
             div.style.display = 'block';
             div.innerHTML = `
                 <img 
@@ -36,10 +38,7 @@ const picture = ({imgClass}) => {
             
         }));
     
-        backgroundCloseModal({
-            modal: div, 
-            bg: ''
-        });
+        backgroundCloseModal({modal: div});
 
     });
 

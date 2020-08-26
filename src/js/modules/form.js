@@ -7,13 +7,8 @@ import success from './success';
 import error from './error';
 import onlyNumbersInput from './onlyNumbersInput';
 
-const form = ({
-    forms, 
-    onlyNumbersInputName,
-    onlyNumbersInputClass
-}) => {
+const form = ({forms, onlyNumbersInputClass}) => {
 
-    onlyNumbersInputName.forEach(inputName => onlyNumbersInput({inputName}));
     onlyNumbersInputClass.forEach(inputClass => onlyNumbersInput({inputClass}));
     
     forms.forEach(form => {

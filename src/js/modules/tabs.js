@@ -12,23 +12,23 @@ const tabs = ({
               tabsContent = document.querySelectorAll(tabsContentClass[ind]),
               active = activeClass[ind];
 
-        btns.forEach((btn, i) => {
-      
-            if (btn.classList.contains(active)) {
-                tabsContent[i].style.display = 'block';
-            }
+        const hideTabContent = () => {
+            btns.forEach(elem => elem.classList.remove(active));
+            tabsContent.forEach(elem => elem.style.display = 'none');
+        };
 
-            btn.addEventListener('click', () => {
+        const showTabContent = (i = 0) => {
+            btns[i].classList.add(active);
+            tabsContent[i].style.display = 'block';
+        };
 
-                btns.forEach(elem => elem.classList.remove(active));
-                tabsContent.forEach(elem => elem.style.display = 'none');
-        
-                btn.classList.add(active);
-                tabsContent[i].style.display = 'block';
-          
-            });
+        btns.forEach((btn, i) => btn.addEventListener('click', () => {
+            hideTabContent();
+            showTabContent(i);
+        }));
 
-        });
+        hideTabContent();
+        showTabContent();
 
     });
 
