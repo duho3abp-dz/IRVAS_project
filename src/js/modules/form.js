@@ -7,7 +7,11 @@ import success from './success';
 import error from './error';
 import onlyNumbersInput from './onlyNumbersInput';
 
-const form = ({forms, onlyNumbersInputClass}) => {
+const form = ({
+    forms, 
+    onlyNumbersInputClass, 
+    messageClosingTime
+}) => {
 
     onlyNumbersInputClass.forEach(inputClass => onlyNumbersInput({inputClass}));
     
@@ -18,16 +22,10 @@ const form = ({forms, onlyNumbersInputClass}) => {
               allForms = document.querySelectorAll(form);
 
         const responseProcessing = (elem) => {
-            spinner.style.display = 'none';
             elem.style.display = '';
             document.body.append(elem);
-
-            setTimeout(() => {
-                elem.style.display = 'none';
-                modal({
-                    close: true
-                });
-            }, 2000);
+            
+            setTimeout(() => elem.style.display = 'none', messageClosingTime);
         };
 
         allForms.forEach(form => form.addEventListener('submit', e => {
@@ -39,11 +37,15 @@ const form = ({forms, onlyNumbersInputClass}) => {
             const data = Object.fromEntries(new FormData(form).entries());
 
             postData(url, data, path)
-                .then(res => {
+                .then(res => responseProcessing(success))
+                .catch(err => responseProcessing(error))
+                .finally(() => {
+                    spinner.style.display = 'none';
                     form.reset();
-                    responseProcessing(success);
-                })
-                .catch(err => responseProcessing(error));
+                    modal({close: true});
+                    document.body.style.overflow = '';
+                });
+
         }));
 
     });

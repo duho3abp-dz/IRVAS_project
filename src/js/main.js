@@ -58,7 +58,8 @@ window.addEventListener('DOMContentLoaded', () => {
         onlyNumbersInputClass: [
             '.form_input-user_phone',
             '.popup_calc .form-control'
-        ]
+        ],
+        messageClosingTime: 3000
     };
 
     // * Calc Data *

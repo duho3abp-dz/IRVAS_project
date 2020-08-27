@@ -1,13 +1,11 @@
 'use strict';
 
-const onlyNumbersInput = ({inputClass, inputName}) => {
+const onlyNumbersInput = ({inputClass}) => {
 
     const allInput = document.querySelectorAll(inputClass);
 
-    allInput.forEach(input => input.addEventListener('keydown', e => {
-        if (! +e.key && e.key !== 'Backspace' && +e.key !== 0) {
-            e.preventDefault();
-        }
+    allInput.forEach(input => input.addEventListener('input', e => {
+        input.value = input.value.replace(/\D/, '');
     }));
 
 };
