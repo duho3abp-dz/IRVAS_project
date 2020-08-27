@@ -1,9 +1,9 @@
 'use strict';
 
-const backgroundCloseModal = ({modal}) => {
+const backgroundCloseModal = ({modal, clickBg = true}) => {
 
     modal.addEventListener('click', ({target}) => {
-        if(target === modal) {
+        if(target === modal && clickBg) {
             modal.style.display = 'none';
             document.body.style.overflow = '';
         }

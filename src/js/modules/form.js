@@ -5,26 +5,32 @@ import modal from './modal';
 import spinner from './spinner';
 import success from './success';
 import error from './error';
+import toggleCheckbox from './toggleCheckbox';
 import onlyNumbersInput from './onlyNumbersInput';
+import changeFormState from './changeFormState';
 
 const form = ({
+    path,
     forms, 
     onlyNumbersInputClass, 
-    messageClosingTime
+    messageClosingTime,
+    formStateElemClass
 }) => {
+
+    let formState = {};
+    changeFormState({...formStateElemClass, formState});
+    toggleCheckbox({checkboxClass: ['.checkbox']});
 
     onlyNumbersInputClass.forEach(inputClass => onlyNumbersInput({inputClass}));
     
     forms.forEach(form => {
 
-        const url = 'http://localhost:3000',
-              path = '/request',
-              allForms = document.querySelectorAll(form);
+        const allForms = document.querySelectorAll(form);
 
         const responseProcessing = (elem) => {
             elem.style.display = '';
             document.body.append(elem);
-            
+
             setTimeout(() => elem.style.display = 'none', messageClosingTime);
         };
 
@@ -34,9 +40,15 @@ const form = ({
             document.body.append(spinner);
             spinner.style.display = '';
 
-            const data = Object.fromEntries(new FormData(form).entries());
+            const formData = new FormData(form);
+            if (form.dataset.calc === 'end') {
+                for (let key in formState) {
+                    formData.append(key, formState[key]);
+                }
+            }
+            const data = Object.fromEntries(formData.entries());
 
-            postData(url, data, path)
+            postData(data, path)
                 .then(res => responseProcessing(success))
                 .catch(err => responseProcessing(error))
                 .finally(() => {

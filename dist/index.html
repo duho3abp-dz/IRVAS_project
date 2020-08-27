@@ -837,8 +837,6 @@
 
     <!-- Calculator -->
 
-    <form class="form" action="#">
-
         <div class="popup_calc">
             <div class="popup_dialog">
                 <div class="popup_calc_content text-center">
@@ -888,13 +886,13 @@
                     </select>
                     <img src="assets/img/modal_calc/icon_cold.png" alt="">
                     <label>
-                        <input class="checkbox" type="checkbox" name="checkbox-cold">
+                        <input class="checkbox" type="checkbox" name="checkbox">
                         <span class="checkbox-custom" id="cold"></span>
                         <span class="label">Холодное</span>
                     </label>
                     <img src="assets/img/modal_calc/icon_warm.png" alt="">
                     <label>
-                        <input class="checkbox" type="checkbox" name="checkbox-warm">
+                        <input class="checkbox" type="checkbox" name="checkbox">
                         <span class="checkbox-custom" id="warm"></span>
                         <span class="label">Теплое</span>
                     </label>
@@ -908,18 +906,16 @@
             <div class="popup_dialog">
                 <div class="popup_content text-center">
                     <button type="button" class="popup_calc_end_close"><strong>&times;</strong></button>
-                    <div class="popup_form popup_end_form">
+                      <form class="form" action="#" data-calc="end">
                           <h2>Спасибо за обращение! <br>Оставьте свои данные</h2>
                           <input class="form-control form_input" name="user_name" required type="text" placeholder="Введите ваше имя">
                           <input class="form-control form_input form_input-user_phone" name="user_phone" required type="text" placeholder="Введите телефон">
                           <button class="text-uppercase btn-block button" name="submit" type="submit">Рассчитать стоимость</button>
                           <p class="form_notice">Перезвоним в течение 10 минут</p>
-                    </div>
+                      </form>
                 </div>
             </div>
         </div>
-
-    </form>
 
     <script src="script.js"></script>
 

@@ -8,6 +8,7 @@ const modal = ({
     close, 
     timer,
     modalTimerClass,
+    notCloseClickBgClass,
     modalWindows = [
         '.popup_engineer',
         '.popup',
@@ -25,11 +26,9 @@ const modal = ({
         }, timer);
     }
     
-    const closingAllModals = () => {
-        modalWindows.forEach(modalClass => {
-            document.querySelector(modalClass).style.display = 'none';
-        });
-    };
+    const closingAllModals = () => modalWindows.forEach(modalClass => {
+        document.querySelector(modalClass).style.display = 'none';
+    });
 
     if (close) {
         closingAllModals();
@@ -42,6 +41,11 @@ const modal = ({
               modal = document.querySelector(modalWindows[i]),
               closeBtn = document.querySelector(modalCloseButtons[i]);
 
+        let clickBg = true;
+        notCloseClickBgClass.forEach(item => {
+            if (item === modalWindows[i]) { clickBg = false; }
+        });
+
         btns.forEach(btn => btn.addEventListener('click', e => {
             if (e.target) {e.preventDefault();}
 
@@ -49,7 +53,6 @@ const modal = ({
             clearInterval(timerOpenModal);
             modal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
-
         }));
 
         closeBtn.addEventListener('click', () => {
@@ -57,7 +60,7 @@ const modal = ({
             document.body.style.overflow = '';
         });
 
-        backgroundCloseModal({modal});
+        backgroundCloseModal({modal, clickBg});
         
     });
 
