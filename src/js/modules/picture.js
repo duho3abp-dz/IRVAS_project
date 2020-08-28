@@ -6,10 +6,10 @@ const picture = ({imgClass}) => {
 
     imgClass.forEach(img => {
 
-        const pictures = document.querySelectorAll(img);
+        const pictures = document.querySelectorAll(img),
+              popup = document.createElement('div');
 
-        const div = document.createElement('div');
-        div.style.cssText = `
+        popup.style.cssText = `
             display: none;
             position: fixed;
             top: 0;
@@ -20,15 +20,15 @@ const picture = ({imgClass}) => {
             background: rgba(0, 0, 0, 0.5);
             z-index: 10;
         `;
-        document.body.append(div);
+        popup.classList.add('faded');
+        document.body.append(popup);
         
         pictures.forEach(pic => pic.addEventListener('click', e => {
             e.preventDefault();
 
             document.body.style.overflow = 'hidden';
-
-            div.style.display = 'block';
-            div.innerHTML = `
+            popup.style.display = 'block';
+            popup.innerHTML = `
                 <img 
                     class="picture_modal" 
                     src="${pic.parentElement.getAttribute('href')}" 
@@ -38,7 +38,7 @@ const picture = ({imgClass}) => {
             
         }));
     
-        backgroundCloseModal({modal: div});
+        backgroundCloseModal({modal: popup});
 
     });
 
