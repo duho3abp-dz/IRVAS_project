@@ -10,6 +10,7 @@ const modal = ({
     timer,
     modalTimerClass,
     notCloseClickBgClass,
+    inputOrCheckboxNotSwitchData,
     modalWindows = [
         '.popup_engineer',
         '.popup',
@@ -50,8 +51,7 @@ const modal = ({
         btns.forEach(btn => btn.addEventListener('click', e => {
             if (e.target) {e.preventDefault();}
 
-            if (checkingInputsOnData(e.target, '.popup_calc_button')) {return;}
-            if (checkingInputsOnData(e.target, '.popup_calc_profile_button')) {return;}
+            if (checkingInputsOnData(e.target, inputOrCheckboxNotSwitchData)) { return; }
 
             closingAllModals();
             clearInterval(timerOpenModal);

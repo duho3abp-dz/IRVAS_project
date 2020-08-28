@@ -20,21 +20,30 @@ const timer = ({
 
             const numberCheck = num => +num < 10 && +num >= 0 ? `0${num}` : num ;
 
+            const updateClock = (d = '00', h = '00', m = '00', s = '00') => {
+                  day.textContent = d;
+                  hour.textContent = h;
+                  minute.textContent = m;
+                  second.textContent = s;
+            };
+
             const сountdown = () => {
                   const total = target - new Date() - timeZoneDifference,
-                        days = Math.floor(total / (1000 * 60 * 60 * 24)),
-                        hours = Math.floor((total / (1000 * 60 * 60)) % 24),
-                        minutes = Math.floor((total / (1000 * 60)) % 60),
-                        seconds = Math.floor((total / 1000) % 60);
+                        days = numberCheck(Math.floor(total / (1000 * 60 * 60 * 24))),
+                        hours = numberCheck(Math.floor((total / (1000 * 60 * 60)) % 24)),
+                        minutes = numberCheck(Math.floor((total / (1000 * 60)) % 60)),
+                        seconds = numberCheck(Math.floor((total / 1000) % 60));
 
-                  day.textContent = numberCheck(days);
-                  hour.textContent = numberCheck(hours);
-                  minute.textContent = numberCheck(minutes);
-                  second.textContent = numberCheck(seconds);
+                  if (+total <= 0) {
+                        updateClock();
+                        clearInterval(timerInterval); 
+                  }
+
+                  updateClock(days, hours, minutes, seconds);
             };  
             сountdown();
 
-            setInterval(сountdown, 1000);
+            const timerInterval = setInterval(сountdown, 1000);
 
       });
 

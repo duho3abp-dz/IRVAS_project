@@ -32,6 +32,10 @@ window.addEventListener('DOMContentLoaded', () => {
             '.popup_calc_profile',
             '.popup_calc_end'
         ],
+        inputOrCheckboxNotSwitchData: [
+            '.popup_calc_button', 
+            '.popup_calc_profile_button'
+        ],
         modalTimerClass: '.popup',
         timer: 60000
     };
@@ -71,7 +75,6 @@ window.addEventListener('DOMContentLoaded', () => {
             windowViewTypeId: '#view_type',
         },
         messageClosingTime: 3000,
-
     };
 
     // * Timer Data *
