@@ -1,6 +1,7 @@
 'use strict';
 
 import backgroundCloseModal from './backgroundCloseModal';
+import checkingInputsOnData from './checkingInputsOnData';
 
 const modal = ({
     buttons, 
@@ -48,6 +49,9 @@ const modal = ({
 
         btns.forEach(btn => btn.addEventListener('click', e => {
             if (e.target) {e.preventDefault();}
+
+            if (checkingInputsOnData(e.target, '.popup_calc_button')) {return;}
+            if (checkingInputsOnData(e.target, '.popup_calc_profile_button')) {return;}
 
             closingAllModals();
             clearInterval(timerOpenModal);
